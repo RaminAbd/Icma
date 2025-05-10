@@ -1,0 +1,233 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .nav-links {
+    display: flex;
+    //align-items: center !important;
+    //justify-content: center;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: var(--primary-color);
+    li {
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      list-style: none;
+      cursor: pointer;
+
+      a {
+        color: #fff;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.3px;
+        border: 1px solid transparent;
+        display: flex;
+        padding: 12px;
+        align-items: center;
+        gap: 16px;
+        align-self: stretch;
+        text-decoration: none;
+        min-width: 160px;
+        border-left: 3px solid transparent;
+        p {
+          color: #fff;
+          font-size: 16px;
+        }
+        &.active {
+          //padding: 0 21px;
+          border-left: 3px solid #267dff;
+          p {
+            color: #fff !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+#komp {
+  @media (max-width: 1024px) {
+    display: none !important;
+  }
+}
+#mob {
+  display: none; /* Hide the menu by default */
+  @media (max-width: 1024px) {
+    display: flex !important;
+  }
+}
+
+nav {
+  &.hide {
+    opacity: 0;
+    z-index: -999;
+  } /* Initially hidden */
+  &.show {
+    z-index: 999;
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .logo {
+    height: 39px;
+    z-index: 3;
+    text-decoration: none;
+    img {
+      height: 100%;
+    }
+    p {
+      color: #fff;
+      font-size: 26px;
+      font-weight: 600;
+    }
+  }
+  #mob {
+    flex-direction: column;
+
+    .row1 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 20px;
+      flex-direction: row;
+    }
+    nav {
+      visibility: visible;
+      position: absolute;
+      background: #fff;
+      top: 0;
+      right: 0;
+      height: 100svh;
+      width: 100%;
+      z-index: 2;
+      ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 90px 20px;
+        min-width: 270px;
+        position: absolute;
+        z-index: 1;
+        li {
+          a {
+            color: #131313;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+          }
+        }
+      }
+    }
+  }
+}
+.burger-back {
+  z-index: 3;
+  position: relative;
+  display: flex;
+  width: 49px;
+  height: 39px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  background: #ff7a0014;
+}
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 23px;
+  height: 17px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 3;
+}
+
+.burger span {
+  display: block;
+  width: 23px;
+  height: 3px;
+  background: var(--primary-color);
+  transition: 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.burger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+.hidden {
+  display: none;
+}
+.create-order {
+  border-radius: 12px;
+  background: #f6911d;
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+  color: #fff;
+  /* font-family: Inter; */
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 0;
+}
+.header {
+  .logo {
+    p {
+      color: var(--primary-color);
+      transition: color 0.3s ease-in-out;
+    }
+  }
+
+  .burger-back {
+    background: var(--primary-color);
+    transition: background 0.3s ease-in-out;
+
+    span {
+      background: #fff;
+      transition: background 0.3s ease-in-out;
+    }
+  }
+
+  &.active {
+    .logo {
+      p {
+        color: #fff;
+      }
+    }
+
+    .burger-back {
+      background: #fff;
+
+      span {
+        background: var(--primary-color);
+      }
+    }
+  }
+}

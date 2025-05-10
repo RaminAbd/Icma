@@ -1,0 +1,68 @@
+<p-editor [(ngModel)]="value" [ngClass]="{ invalid: invalid }" id="answer" [style]="{ height: '200px' }" #editor [attr.data-index]="index" (ngModelChange)="changedValue.emit(value)">
+  <ng-template pTemplate="header">
+    <div class="ql-toolbar">
+      <span class="ql-formats">
+        <select class="ql-font"></select>
+        <select class="ql-size"></select>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-bold"></button>
+        <button class="ql-italic"></button>
+        <button class="ql-underline"></button>
+      </span>
+      <select class="ql-color ql-picker ql-color-picker">
+        <option value="red"></option>
+        <option value="green"></option>
+        <option value="blue"></option>
+        <option value="black"></option>
+        <option value="white"></option>
+        <option value="yellow"></option>
+        <option value="orange"></option>
+        <option value="pink"></option>
+        <option value="purple"></option>
+        <option value="brown"></option>
+        <option value="gray"></option>
+        <option value="cyan"></option>
+      </select>
+
+      <!-- Background color -->
+      <select class="ql-background ql-picker ql-color-picker">
+        <option value="red"></option>
+        <option value="green"></option>
+        <option value="blue"></option>
+        <option value="black"></option>
+        <option value="white"></option>
+        <option value="yellow"></option>
+        <option value="orange"></option>
+        <option value="pink"></option>
+        <option value="purple"></option>
+        <option value="brown"></option>
+        <option value="gray"></option>
+        <option value="cyan"></option>
+      </select>
+      <span class="ql-formats">
+        <button class="ql-list" value="ordered"></button>
+        <button class="ql-list" value="bullet"></button>
+        <button class="ql-link"></button>
+        <span class="image my-image-icon">
+          <label for="file">
+            <i class="pi pi-image"></i>
+          </label>
+          <input type="file" id="file" [ngModel]="fakeFile" (change)="onFileSelect($event)" accept="image/*" />
+        </span>
+      </span>
+
+      <!-- Alignment options -->
+      <span class="ql-formats">
+        <button class="ql-align" value=""></button>
+        <!-- Default (left-align) -->
+        <button class="ql-align" value="center"></button>
+        <!-- Center-align -->
+        <button class="ql-align" value="right"></button>
+        <!-- Right-align -->
+        <button class="ql-align" value="justify"></button>
+        <!-- Justify -->
+      </span>
+    </div>
+  </ng-template>
+</p-editor>

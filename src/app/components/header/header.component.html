@@ -1,0 +1,30 @@
+<header class="header mobile" id="mob">
+  <div class="row1">
+    <a routerLink="/" class="logo" aria-label="logo">
+      <img src="logo.svg" alt="">
+    </a>
+
+    <div class="burger-back">
+      <div class="menu-burger burger" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <nav
+    [@menuExpand]="showMenu ? 'open' : 'closed'"
+    (@menuExpand.done)="onAnimationDone()"
+    [ngClass]="{ hidden: isHidden }"
+  >
+    <ul class="nav-links" *ngFor="let section of sections">
+      <li (click)="closeBurger()" *ngFor="let link of section.links">
+        <a [routerLink]="link.url" [routerLinkActive]="['active']">
+          <span style="display: flex" [innerHTML]="sanitize(link.icon)"></span>
+          <p>{{ link.name | translate }}</p>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,83 @@
+<div class="header-wrapper">
+  <div class="inner">
+    <a routerLink="/"  class="logo">
+      <img src="logo.svg" alt="" />
+    </a>
+    <div class="lang-info">
+      <nav>
+        <ul>
+<!--          <li>-->
+<!--            <a routerLink="home" [routerLinkActive]="['active']" aria-label="home">{{ "Home" | translate }}</a>-->
+<!--          </li>-->
+          <li>
+            <a routerLink="projects" [routerLinkActive]="['active']" aria-label="projects">{{
+                "Projects" | translate
+              }}</a>
+          </li>
+          <li>
+            <a routerLink="about" [routerLinkActive]="['active']" aria-label="about">{{
+                "About" | translate
+              }}</a>
+          </li>
+          <li>
+            <a routerLink="news" [routerLinkActive]="['active']" aria-label="news">{{
+                "News" | translate
+              }}</a>
+          </li>
+          <li>
+            <a routerLink="contact" [routerLinkActive]="['active']" aria-label="contact">{{
+                "Contact" | translate
+              }}</a>
+          </li>
+          <li>
+            <a (click)="selectLang(selectedLang === 'ka-Geo' ? 'en-Us' : 'ka-Geo')">{{ selectedLang | translate }}</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+
+</div>
+<div class="mobile-header" id="mob">
+  <div class="row">
+    <a routerLink="/"  class="logo">
+      <img src="text-logo.svg" alt="" />
+    </a>
+    <div class="menu-burger burger" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav (@menuExpand.done)="onAnimationDone()"
+       [ngClass]="{ hidden: isHidden }"  [@menuExpand]="showMenu ? 'open' : 'closed'">
+    <div class="nav-links">
+      <div class="nav">
+        <ul>
+          <li>
+            <a href="#first" aria-label="home" (click)="closeBurger()">{{
+                "Home" | translate
+              }}</a>
+          </li>
+          <li>
+            <a href="#fourth" aria-label="services" (click)="closeBurger()">{{
+                "Services" | translate
+              }}</a>
+          </li>
+          <li>
+            <a href="#fifth" aria-label="packages" (click)="closeBurger()">{{
+                "Packages" | translate
+              }}</a>
+          </li>
+          <li>
+            <a href="#sixth" aria-label="contact" (click)="closeBurger()">{{
+                "Contact Us" | translate
+              }}</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+</div>
