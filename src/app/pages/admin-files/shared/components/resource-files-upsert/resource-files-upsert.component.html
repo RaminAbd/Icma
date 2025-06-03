@@ -95,7 +95,7 @@
   <div class="row1">
     <div class="input-item" *ngFor="let item of request.description.items">
       <label>{{ "Description" | translate }} ( {{ item.languageName }} )</label>
-      <textarea  [(ngModel)]="item.value"></textarea>
+      <textarea  [(ngModel)]="item.value" [class.invalid]="!item.value && isSubmitted"></textarea>
 <!--      <app-custom-editor-->
 <!--        [value]="item.value"-->
 <!--        [invalid]="!item.value && isSubmitted"-->

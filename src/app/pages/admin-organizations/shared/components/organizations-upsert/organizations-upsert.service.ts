@@ -20,6 +20,17 @@ export class OrganizationsUpsertService {
   private blob: BlobService = inject(BlobService);
   constructor() {}
 
+  getFile(e: any, fileHandler: any) {
+    const files = e.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const fd = new FormData();
+      fd.append('file', files[i]);
+      this.blob.UploadFile(fd).subscribe((resp: any) => {
+        fileHandler(resp);
+      });
+    }
+  }
+
 
   save() {
     this.component.isSubmitted = true;

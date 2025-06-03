@@ -96,6 +96,7 @@ export class AdminOrganizationsService {
   private getForm() {
     this.service.GetForm(this.service.serviceUrl).subscribe((resp) => {
       if (resp.succeeded) {
+        resp.data.image = new FileModel();
         resp.data.name.items.map((x: any) => (x.isValid = true));
         resp.data.description.items.map((x: any) => (x.isValid = true));
 
