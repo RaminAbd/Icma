@@ -1,0 +1,59 @@
+<div class="wrapper">
+  <div class="heading">
+    <h1>Literature</h1>
+  </div>
+
+  <div class="cnt">
+    <div class="benefits">
+      <div class="benefits-container">
+        <div class="fixed">
+          <div class="menu">
+            <div class="m-items">
+              <div
+                class="item"
+                *ngFor="let item of types"
+                (click)="select(item)"
+              >
+                <div
+                  class="name"
+                  [ngClass]="{ selected: item.selected }"
+                  (click)="toggleChildren(item)"
+                >
+                  <p>{{ item.name }}</p>
+                  <div class="icon" *ngIf="item.children">
+                    <i class="pi pi-angle-up" *ngIf="item.isOpen"></i>
+                    <i class="pi pi-angle-down" *ngIf="!item.isOpen"></i>
+                  </div>
+                </div>
+                <div class="children" *ngIf="item.children && item.isOpen">
+                  <div
+                    class="child"
+                    *ngFor="let child of item.children"
+                    [ngClass]="{ selected: child.selected }"
+                    (click)="selectChild($event, item, child)"
+                  >
+                    <div class="name">
+                      <p>{{ child.name }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scroll">
+          <div class="items right-border-bottom">
+            <div class="item" *ngFor="let item of files">
+              <div class="image">
+                <img [src]="item.image" alt="" />
+              </div>
+              <p>
+                {{ item.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

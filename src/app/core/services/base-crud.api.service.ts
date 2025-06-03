@@ -16,7 +16,7 @@ export class BaseCrudApiService extends BaseApiService {
   }
 
   GetAll(serviceUrl: string) {
-    return this.get(serviceUrl + 'getAll/', null, null);
+    return this.get(serviceUrl + 'getAll', null, null);
   }
 
   GetAllByLang(serviceUrl: string, lang: any) {

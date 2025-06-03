@@ -37,7 +37,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
             'authRequest',
           ) as AuthRequestModel;
           if (req && req.remember) {
-            this.signInService.SignIn(req);
+            this.SignIn(req);
           } else {
             this.navigateToSignIn().then(() => {});
           }
@@ -48,6 +48,15 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
         return observableThrowError(errorResponse);
       }),
     );
+  }
+
+  SignIn(req: AuthRequestModel) {
+    this.apiService.SignIn(req).subscribe((resp: any) => {
+      if (resp.succeeded) {
+        this.signInService.setToStorage(resp.data, req);
+        this.signInService.navigateByRole(resp.data);
+      }
+    });
   }
 
   async navigateToSignIn() {

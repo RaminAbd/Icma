@@ -1,0 +1,67 @@
+<div class="wrapper">
+  <div class="row1">
+    <div class="input-item" *ngFor="let item of request.name.items">
+      <label>{{ "Name" | translate }} ( {{ item.languageName }} )</label>
+      <input
+        type="text"
+        [ngClass]="{
+          invalid:
+            (!item.isValid && isSubmitted) || (!item.value && isSubmitted),
+        }"
+        [(ngModel)]="item.value"
+        placeholder="Lorem ipsum"
+      />
+    </div>
+  </div>
+  <div class="row1">
+    <div class="input-item">
+      <label>{{ "Phone number" | translate }} </label>
+      <input
+        type="text"
+        [ngClass]="{
+          invalid: !request.phoneNumber && isSubmitted,
+        }"
+        [(ngModel)]="request.phoneNumber"
+      />
+    </div>
+  </div>
+  <div class="row1">
+    <div class="input-item">
+      <label>{{ "Link" | translate }} </label>
+      <input
+        type="text"
+        [ngClass]="{
+          invalid: !request.link && isSubmitted,
+        }"
+        [(ngModel)]="request.link"
+      />
+    </div>
+  </div>
+  <div class="row1">
+    <div class="input-item">
+      <label for="category">{{ "Type" }}</label>
+      <p-dropdown
+        [style]="{ width: '100%', height: '40px' }"
+        [options]="types"
+        optionLabel="name"
+        optionValue="value"
+        [(ngModel)]="request.resourceType"
+        id="category"
+      ></p-dropdown>
+    </div>
+  </div>
+  <div class="row1">
+    <div class="input-item" *ngFor="let item of request.description.items">
+      <label>{{ "Description" | translate }} ( {{ item.languageName }} )</label>
+      <app-custom-editor
+        [value]="item.value"
+        [invalid]="!item.value && isSubmitted"
+        (changedValue)="item.value = $event"
+      ></app-custom-editor>
+    </div>
+  </div>
+  <div class="btns">
+    <button (click)="ref.close()">{{ "Cancel" }}</button>
+    <button class="save" (click)="save()">{{ "Save" }}</button>
+  </div>
+</div>

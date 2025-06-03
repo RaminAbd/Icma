@@ -10,7 +10,7 @@
         <p class="sec-name">{{ section.name | translate}}</p>
         <div class="sec-links">
           <a *ngFor="let link of section.links" [routerLink]="link.url" [routerLinkActive]="['active']">
-            <span style="display: flex;" [innerHTML]="sanitize(link.icon)"></span>
+<!--            <span style="display: flex;" [innerHTML]="sanitize(link.icon)"></span>-->
             <p>{{ link.name | translate }}</p>
           </a>
         </div>

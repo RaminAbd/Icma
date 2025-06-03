@@ -1,0 +1,59 @@
+<div class="wrapper">
+  <div class="heading">
+    <h3>Gallery images</h3>
+    <button (click)="create()">Create</button>
+  </div>
+  <div class="items">
+    <div class="item" *ngFor="let item of images" >
+      <img [src]="item.image" alt=""  (click)="openImage(item)" />
+      <div class="info">
+        <p>{{ item.title }}</p>
+        <div
+          class="btn"
+          (click)="
+            $event.stopPropagation(); op.toggle($event); openToolbar(item)
+          "
+        >
+          <button class="toolbar-btn" style="height: 22px">
+            <i class="pi pi-cog"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-popover #op>
+  <div class="flex flex-col gap-4 w-[25rem]">
+    <div class="actions">
+      <div class="item edit" (click)="edit(); op.toggle($event)">
+        <div class="icon">
+          <img src="edit.svg" alt="" />
+        </div>
+        <p>{{ "Edit" }}</p>
+      </div>
+      <div class="item delete" (click)="delete(); op.toggle($event)">
+        <div class="icon"><img src="delete.svg" alt="" /></div>
+        <p>{{ "Delete" }}</p>
+      </div>
+    </div>
+  </div>
+</p-popover>
+<div
+  class="lightbox-backdrop"
+  *ngIf="showLightBox"
+  (click)="closeLightbox()"
+  @fadeInOut
+>
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <div class="image" @zoomInOut >
+      <div class="image-heading">
+        <p>{{selectedImage.title}}</p>
+        <p>{{selectedImage.createdAt | date: "MMM dd, yyyy HH:mm"}}</p>
+      </div>
+      <img [src]="selectedImage.image.fileUrl" alt="Selected Image" />
+    </div>
+    <span class="close-btn" (click)="closeLightbox()">&times;</span>
+  </div>
+</div>
+
+<div class="blur" *ngIf="showLightBox"></div>

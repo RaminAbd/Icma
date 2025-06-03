@@ -31,7 +31,7 @@ export class AuthComponent {
   requestForm = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
-    remember: [false]
+    remember: [true]
   });
 
   validateField(field: string) {

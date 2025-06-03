@@ -1,0 +1,89 @@
+<div class="wrapper">
+  <div class="heading">
+    <h3>Gallery videos</h3>
+    <button (click)="create()">Create</button>
+  </div>
+  <div class="items">
+    <div class="item" *ngFor="let item of videos">
+      <div class="image">
+        <div class="play-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="19"
+            height="22"
+            viewBox="0 0 19 22"
+            fill="none"
+          >
+            <path
+              d="M2.19185 1.11117C2.07201 1.0396 1.9355 1.00126 1.79619 1.00003C1.65688 0.998805 1.51973 1.03474 1.39868 1.10419C1.27762 1.17364 1.17697 1.27412 1.10694 1.39543C1.03692 1.51675 1.00002 1.65456 1 1.79489V20.2051C1.00002 20.3454 1.03692 20.4833 1.10694 20.6046C1.17697 20.7259 1.27762 20.8264 1.39868 20.8958C1.51973 20.9653 1.65688 21.0012 1.79619 21C1.9355 20.9987 2.07201 20.9604 2.19185 20.8888L17.6135 11.6837C17.7313 11.6133 17.8288 11.5133 17.8966 11.3934C17.9644 11.2735 18 11.1379 18 11C18 10.8621 17.9644 10.7265 17.8966 10.6066C17.8288 10.4867 17.7313 10.3867 17.6135 10.3163L2.19185 1.11117Z"
+              fill="white"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <img [src]="item.image" alt="" (click)="openImage(item)" />
+      </div>
+
+      <div class="info">
+        <p>{{ item.title }}</p>
+        <div
+          class="btn"
+          (click)="
+            $event.stopPropagation(); op.toggle($event); openToolbar(item)
+          "
+        >
+          <button class="toolbar-btn" style="height: 22px">
+            <i class="pi pi-cog"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-popover #op>
+  <div class="flex flex-col gap-4 w-[25rem]">
+    <div class="actions">
+      <div class="item edit" (click)="edit(); op.toggle($event)">
+        <div class="icon">
+          <img src="edit.svg" alt="" />
+        </div>
+        <p>{{ "Edit" }}</p>
+      </div>
+      <div class="item delete" (click)="delete(); op.toggle($event)">
+        <div class="icon"><img src="delete.svg" alt="" /></div>
+        <p>{{ "Delete" }}</p>
+      </div>
+    </div>
+  </div>
+</p-popover>
+<div
+  class="lightbox-backdrop"
+  *ngIf="showLightBox"
+  (click)="closeLightbox()"
+  @fadeInOut
+>
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <div class="image" @zoomInOut>
+      <div class="image-heading">
+        <p>{{ selectedVideo.title }}</p>
+<!--        <p>{{ selectedVideo.createdAt | date : "MMM dd, yyyy HH:mm" }}</p>-->
+      </div>
+      <iframe
+        style="max-width: 100%;max-height: 100%"
+        width="860"
+        height="515"
+        [src]="selectedVideo.safeUrl"
+        frameborder="0"
+        sandbox="allow-same-origin allow-scripts allow-popups"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <span class="close-btn" (click)="closeLightbox()">&times;</span>
+  </div>
+</div>
+
+<div class="blur" *ngIf="showLightBox"></div>
