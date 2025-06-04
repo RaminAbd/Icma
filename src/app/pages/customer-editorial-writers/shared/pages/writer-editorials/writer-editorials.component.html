@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="items">
+    <div
+      class="item"
+      *ngFor="let item of editorials"
+      [routerLink]="'/editorials/details/' + item.id"
+    >
+      <div class="image">
+        <img [src]="item.image.fileUrl" alt="" />
+      </div>
+      <div class="title">
+        <p>{{ item.name }}</p>
+      </div>
+    </div>
+  </div>
+</div>

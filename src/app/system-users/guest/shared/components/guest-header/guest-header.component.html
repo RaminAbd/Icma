@@ -47,7 +47,12 @@
         ></a>
       </div>
       <div class="links">
-        <a href="">JOBS</a>
+        <a
+          routerLink="jobs"
+          [routerLinkActive]="['active']"
+          aria-label="jobs"
+        >{{ "Jobs" | translate }}</a
+        >
       </div>
     </div>
     <div class="middle">
@@ -87,10 +92,10 @@
             </li>
             <li>
               <a
-                routerLink="jobs"
+                routerLink="editorials"
                 [routerLinkActive]="['active']"
                 aria-label="contact"
-                >{{ "Jobs" | translate }}</a
+              >{{ "Editorials" | translate }}</a
               >
             </li>
             <li>
@@ -101,22 +106,8 @@
                 >{{ "Videos" | translate }}</a
               >
             </li>
-            <li>
-              <a
-                routerLink="gallery"
-                [routerLinkActive]="['active']"
-                aria-label="contact"
-                >{{ "Gallery" | translate }}</a
-              >
-            </li>
-            <li>
-              <a
-                routerLink="editorials"
-                [routerLinkActive]="['active']"
-                aria-label="contact"
-                >{{ "Editorials" | translate }}</a
-              >
-            </li>
+
+
           </ul>
         </nav>
       </div>

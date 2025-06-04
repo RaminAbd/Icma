@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <div class="heading">
+    <h1>Editorials</h1>
+  </div>
+  <div class="content">
+    <div class="cus-news-wrapper news-items">
+      <!--      [routerLink]="'/news/details/' + item.id"-->
+      <div
+        *ngFor="let item of writers"
+        class="item border-1 surface-border border-round m-2 text-center py-5 px-3"
+        style="cursor: pointer"
+        [routerLink]="'/editorials/' + item.id"
+      >
+        <div class="image">
+          <img [src]="item.image" alt="" />
+        </div>
+        <div class="info">
+          <div class="name">
+            <p class="title">
+              {{ item.name }}
+            </p>
+            <p class="category">
+              {{ "Read more" | translate }}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="9"
+                height="13"
+                viewBox="0 0 9 13"
+                fill="none"
+              >
+                <path
+                  d="M5.52308 6.5L0.750001 1.83312L2.11346 0.5L8.25 6.5L2.11346 12.5L0.75 11.1669L5.52308 6.5Z"
+                  fill="#FF9900"
+                />
+              </svg>
+            </p>
+          </div>
+          <div class="descr">
+            <p>{{ item.biography }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

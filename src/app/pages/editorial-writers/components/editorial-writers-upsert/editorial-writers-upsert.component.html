@@ -1,10 +1,23 @@
 <div class="wrapper">
   <div class="row1">
+    <div class="input-item" *ngFor="let item of request.name.items">
+      <label>{{ "Writer name" | translate }} </label>
+      <input
+        type="text"
+        [ngClass]="{
+          invalid:
+            (!item.isValid && isSubmitted) || (!item.value && isSubmitted),
+        }"
+        [(ngModel)]="item.value"
+      />
+    </div>
+  </div>
+  <div class="row1">
     <div class="input-item file-input">
-      <label>{{ "Image (900 × 600 px)" }}</label>
+      <label>{{ "Writer image (150x150px)" }}</label>
       <label
         class="file-label"
-        for="file"
+        for="writerImage"
         [class.invalid]="!request.image.fileUrl && isSubmitted"
       >
         <p *ngIf="!request.image.fileUrl && !request.image.fileLoading">
@@ -29,19 +42,19 @@
         </p>
       </label>
       <input
-        id="file"
+        id="writerImage"
         type="file"
         [(ngModel)]="request.image.fakeFile"
-        (change)="getFile($event)"
+        (change)="getWriterFile($event)"
         multiple="false"
         accept="image/*"
       />
     </div>
   </div>
   <div class="row1">
-    <div class="input-item" *ngFor="let item of request.title.items">
-      <label>{{ "Title" | translate }} ( {{ item.languageName }} )</label>
-      <input
+    <div class="input-item" *ngFor="let item of request.biography.items">
+      <label>{{ "Biography" | translate }} ( {{ item.languageName }} )</label>
+      <textarea
         type="text"
         [ngClass]="{
           invalid:
@@ -49,30 +62,7 @@
         }"
         [(ngModel)]="item.value"
         placeholder="Lorem ipsum"
-      />
-    </div>
-  </div>
-  <div class="row1">
-    <div class="input-item">
-      <label for="category">{{ "Writer" | translate }}</label>
-      <p-dropdown
-        [style]="{ width: '100%', height: '48px' }"
-        [options]="writers"
-        optionLabel="name"
-        optionValue="id"
-        [(ngModel)]="request.writerId"
-        id="category"
-      ></p-dropdown>
-    </div>
-  </div>
-  <div class="row1">
-    <div class="input-item" *ngFor="let item of request.description.items">
-      <label>{{ "Description" | translate }} ( {{ item.languageName }} )</label>
-      <app-custom-editor
-        [value]="item.value"
-        [invalid]="!item.value && isSubmitted"
-        (changedValue)="item.value = $event"
-      ></app-custom-editor>
+      ></textarea>
     </div>
   </div>
   <div class="btns">

@@ -6,6 +6,5 @@ export class EditorialsRequestModel {
   title: MultilingualNameModel = new MultilingualNameModel();
   description: MultilingualNameModel = new MultilingualNameModel();
   image: FileModel = new FileModel();
-  writerImage: FileModel = new FileModel();
-  writerName: string;
+  writerId:string
 }

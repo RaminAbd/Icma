@@ -6,6 +6,8 @@ import {CustomEditorComponent} from '../../../../../components/custom-editor/cus
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslatePipe} from '@ngx-translate/core';
+import {EditorialWritersResponseModel} from '../../../../editorial-writers/models/editorial-writers-response.model';
+import {DropdownModule} from 'primeng/dropdown';
 
 @Component({
   selector: 'app-editorial-upsert',
@@ -16,7 +18,8 @@ import {TranslatePipe} from '@ngx-translate/core';
     ReactiveFormsModule,
     TranslatePipe,
     FormsModule,
-    NgClass
+    NgClass,
+    DropdownModule
   ],
   templateUrl: './editorial-upsert.component.html',
   styleUrl: './editorial-upsert.component.scss',
@@ -27,8 +30,10 @@ export class EditorialUpsertComponent {
   public ref: DynamicDialogRef = inject(DynamicDialogRef);
   request: EditorialsRequestModel = new EditorialsRequestModel();
   isSubmitted: boolean = false;
+  writers: EditorialWritersResponseModel[] = [];
   constructor() {
     this.service.component = this;
+    this.service.getAllWriters()
     this.request = this.config.data;
   }
 
@@ -39,16 +44,6 @@ export class EditorialUpsertComponent {
       this.request.image = resp.data;
       this.request.image.fakeFile = null;
       this.request.image.isValid = true;
-    });
-  }
-
-  getWriterFile(e: any) {
-    this.request.writerImage.fileLoading = true;
-    this.service.getFile(e, (resp: any) => {
-      this.request.writerImage.fileLoading = false;
-      this.request.writerImage = resp.data;
-      this.request.writerImage.fakeFile = null;
-      this.request.writerImage.isValid = true;
     });
   }
 

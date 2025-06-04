@@ -1,34 +1,22 @@
 import { inject, Injectable } from '@angular/core';
-import { ApplicationMessageCenterService } from '../../../../../core/services/ApplicationMessageCenter.service';
-import { BlobService } from '../../../../../core/services/blob.service';
-import { EditorialUpsertComponent } from './editorial-upsert.component';
-import { EditorialsApiService } from '../../services/editorials.api.service';
-import { EditorialWritersApiService } from '../../../../editorial-writers/services/editorial-writers.api.service';
-import {TranslateService} from '@ngx-translate/core';
+import { ApplicationMessageCenterService } from '../../../../core/services/ApplicationMessageCenter.service';
+import { BlobService } from '../../../../core/services/blob.service';
+import { EditorialWritersUpsertComponent } from './editorial-writers-upsert.component';
+import { EditorialWritersApiService } from '../../services/editorial-writers.api.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EditorialUpsertService {
-  component: EditorialUpsertComponent;
-  private service: EditorialsApiService = inject(EditorialsApiService);
-  private translate: TranslateService = inject(TranslateService);
+export class EditorialWritersUpsertService {
+  component: EditorialWritersUpsertComponent;
+  private service: EditorialWritersApiService = inject(
+    EditorialWritersApiService,
+  );
   public message: ApplicationMessageCenterService = inject(
     ApplicationMessageCenterService,
   );
-  private writersService: EditorialWritersApiService = inject(
-    EditorialWritersApiService,
-  );
   private blob: BlobService = inject(BlobService);
   constructor() {}
-
-  getAllWriters() {
-    this.writersService
-      .GetAllByLang(this.writersService.serviceUrl, this.translate.currentLang)
-      .subscribe((resp) => {
-        this.component.writers = resp.data;
-      });
-  }
 
   getFile(e: any, fileHandler: any) {
     const files = e.target.files;
@@ -78,7 +66,7 @@ export class EditorialUpsertService {
 
   private isValid() {
     let result = true;
-    this.component.request.title.items.forEach((item) => {
+    this.component.request.biography.items.forEach((item) => {
       if (!item.value) {
         result = false;
         item.isValid = false;
@@ -86,7 +74,7 @@ export class EditorialUpsertService {
         item.isValid = true;
       }
     });
-    this.component.request.description.items.forEach((item) => {
+    this.component.request.name.items.forEach((item) => {
       if (!item.value) {
         result = false;
         item.isValid = false;
@@ -95,10 +83,7 @@ export class EditorialUpsertService {
       }
     });
 
-    if (
-      !this.component.request.image.fileUrl ||
-      !this.component.request.writerId
-    ) {
+    if (!this.component.request.image.fileUrl) {
       result = false;
     }
 

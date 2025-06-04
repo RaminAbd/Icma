@@ -11,4 +11,8 @@ export class EditorialsApiService  extends BaseCrudApiService {
   constructor(http: HttpClient, handler: ApplicationMessageCenterService) {
     super(http, handler);
   }
+
+  GetAllByWriter(req:any){
+    return this.get(this.serviceUrl+'GetAllByWriter', null, req)
+  }
 }

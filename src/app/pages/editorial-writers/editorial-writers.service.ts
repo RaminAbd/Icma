@@ -1,23 +1,29 @@
 import { inject, Injectable } from '@angular/core';
+import { EditorialsApiService } from '../admin-editorials/shared/services/editorials.api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ApplicationMessageCenterService } from '../../core/services/ApplicationMessageCenter.service';
+import { AdminEditorialsComponent } from '../admin-editorials/admin-editorials.component';
+import { EditorialUpsertComponent } from '../admin-editorials/shared/components/editorial-upsert/editorial-upsert.component';
 import { FileModel } from '../../core/models/File.model';
-import { EditorialsApiService } from './shared/services/editorials.api.service';
-import { AdminEditorialsComponent } from './admin-editorials.component';
-import { EditorialUpsertComponent } from './shared/components/editorial-upsert/editorial-upsert.component';
+import { EditorialWritersApiService } from './services/editorial-writers.api.service';
+import { EditorialWritersComponent } from './editorial-writers.component';
+import { EditorialWritersUpsertComponent } from './components/editorial-writers-upsert/editorial-writers-upsert.component';
+import {EditorialWritersRequestModel} from './models/editorial-writers-request.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AdminEditorialsService {
-  private service: EditorialsApiService = inject(EditorialsApiService);
+export class EditorialWritersService {
+  private service: EditorialWritersApiService = inject(
+    EditorialWritersApiService,
+  );
   private translate: TranslateService = inject(TranslateService);
   public dialogService: DialogService = inject(DialogService);
   public message: ApplicationMessageCenterService = inject(
     ApplicationMessageCenterService,
   );
-  component: AdminEditorialsComponent;
+  component: EditorialWritersComponent;
 
   constructor() {}
 
@@ -25,14 +31,14 @@ export class AdminEditorialsService {
     this.service
       .GetAllByLang(this.service.serviceUrl, this.translate.currentLang)
       .subscribe((resp) => {
-        this.component.editorials = resp.data;
+        this.component.writers = resp.data;
       });
   }
 
   tableActionHandler(e: any) {
     switch (e.type) {
       case 1:
-        this.getForm();
+        this.getForm()
         break;
       case 2:
         this.getItem(e.data.id);
@@ -45,15 +51,14 @@ export class AdminEditorialsService {
 
   setCols() {
     this.component.cols = [
-      { field: 'title', header: 'Title' },
-      { field: 'writerName', header: 'Writer' },
+      { field: 'name', header: 'Writer' },
       { field: 'crudActions', header: 'Actions' },
     ];
   }
 
   openDialog(data: any) {
-    const ref = this.dialogService.open(EditorialUpsertComponent, {
-      header: 'Editorial',
+    const ref = this.dialogService.open(EditorialWritersUpsertComponent, {
+      header: 'Writer',
       width: '700px',
       data: data,
       style: {
@@ -70,9 +75,8 @@ export class AdminEditorialsService {
   private getItem(id: any) {
     this.service.GetById(this.service.serviceUrl, id).subscribe((resp) => {
       if (resp.succeeded) {
-        resp.data.title.items.map((x: any) => (x.isValid = true));
-        resp.data.description.items.map((x: any) => (x.isValid = true));
         if (!resp.data.image) resp.data.image = new FileModel();
+        resp.data.biography.items.map((x: any) => (x.isValid = true));
         this.openDialog(resp.data);
       }
     });
@@ -81,9 +85,7 @@ export class AdminEditorialsService {
   private delete(id: string) {
     this.service.Delete(this.service.serviceUrl, id).subscribe((resp) => {
       if (resp.succeeded) {
-        this.message.showTranslatedSuccessMessage(
-          'Successfully deleted',
-        );
+        this.message.showTranslatedSuccessMessage('Successfully deleted');
         this.getAll();
       }
     });
@@ -92,11 +94,10 @@ export class AdminEditorialsService {
   private getForm() {
     this.service.GetForm(this.service.serviceUrl).subscribe((resp) => {
       if (resp.succeeded) {
-        resp.data.title.items.map((x: any) => (x.isValid = true));
-        resp.data.description.items.map((x: any) => (x.isValid = true));
-        resp.data.image = new FileModel();
+        if (!resp.data.image) resp.data.image = new FileModel();
+        resp.data.biography.items.map((x: any) => (x.isValid = true));
         this.openDialog(resp.data);
       }
-    });
+    })
   }
 }

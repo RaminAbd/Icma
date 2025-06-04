@@ -6,6 +6,7 @@ import {AdminOrganizationsComponent} from '../../../../pages/admin-organizations
 import {AdminProgramsComponent} from '../../../../pages/admin-programs/admin-programs.component';
 import {AdminWorksComponent} from '../../../../pages/admin-works/admin-works.component';
 import {AdminFilesComponent} from '../../../../pages/admin-files/admin-files.component';
+import {EditorialWritersComponent} from '../../../../pages/editorial-writers/editorial-writers.component';
 
 export class AdminChildrenRoutes {
   static children: Route[] = [
@@ -13,6 +14,11 @@ export class AdminChildrenRoutes {
       path: 'editorials',
       component: AdminEditorialsComponent,
       data: { title: 'Editorials' },
+    },
+    {
+      path: 'writers',
+      component: EditorialWritersComponent,
+      data: { title: 'Writers' },
     },
     {
       path: 'images',

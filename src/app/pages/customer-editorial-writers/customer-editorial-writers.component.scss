@@ -1,0 +1,196 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+
+
+  .heading {
+    width: 100%;
+    height: 266px;
+    flex-shrink: 0;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 68, 148, 0.6) 0%,
+        rgba(14, 48, 81, 0.6) 100%
+    ),
+    url("https://icmablob.blob.core.windows.net/files/ad392468-2d97-40ce-be84-98401531ca322872a84531729b0de29f380ef0a4036c207c646a%20%281%29.webp")
+    lightgray 0px -192.966px / 100% 277.549% no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      color: #fff;
+      font-family: "DM Sans";
+      font-size: 54px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+    }
+  }
+
+  .content {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 30px 42px;
+    @media (max-width: 769px) {
+      padding: 30px 20px;
+    }
+  }
+  //background: #242627;
+
+  .news-items {
+    gap: 20px;
+    display: grid;
+    grid-column-gap: 1.35em;
+    grid-row-gap: 2.35em;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr ;
+    place-content: center;
+    margin-top: 30px;
+    @media (max-width: 769px) {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    .item {
+      display: flex;
+      flex: 1;
+      gap: 14px;
+      cursor: pointer;
+      align-items: center;
+      @media (max-width: 769px) {
+        width: 100%;
+        max-width: 100%;
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        .name{
+          display: flex;
+          align-items: center;
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+      .writer {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        align-self: stretch;
+        p {
+          color: #000;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          @media (max-width: 769px) {
+            display: none;
+          }
+        }
+        span {
+          color: #999;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          .dot {
+            width: 3px;
+            height: 3px;
+            background: #999;
+            border-radius: 50%;
+            display: inline-block;
+          }
+        }
+      }
+
+      p.title {
+        color: #333;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        @media (max-width: 769px) {
+          text-align: start;
+        }
+        @media (max-width: 400px) {
+          font-size: 14px;
+        }
+        //white-space: nowrap;
+        //overflow: hidden;
+        //text-overflow: ellipsis;
+        //max-width: 200px;
+      }
+      p.category {
+        color: #f90;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      ::ng-deep p {
+        color: #999;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px; /* 171.429% */
+        word-break: break-word;
+      }
+      .image {
+        position: relative;
+        width: 137px;
+        height: 137px;
+        min-width: 137px;
+        @media (max-width: 769px) {
+          height: 100px;
+          width: 150px;
+          min-width: 140px;
+        }
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+        .play-btn {
+          display: flex;
+          width: 47px;
+          height: 46px;
+          padding: 4px 5px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          flex-shrink: 0;
+          position: absolute;
+          left: 0px;
+          bottom: 0px;
+          background: #141618;
+          p {
+            color: #333;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+          @media (max-width: 769px) {
+            border-radius: 12px;
+          }
+        }
+      }
+    }
+  }
+}

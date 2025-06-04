@@ -1,0 +1,9 @@
+<div>
+  <app-table
+    [Array]="writers"
+    [cols]="cols"
+    [TableName]="'Writers'"
+    [showCreate]="true"
+    (Action)="tableActionHandler($event)"
+  ></app-table>
+</div>

@@ -14,7 +14,7 @@ export class OrganizationsComponent {
   organizations: OrganizationsResponseModel[] = [];
   copy: OrganizationsResponseModel[] = [];
   types: any[] = [
-    { name: 'All', value: 1 , selected: true },
+    { name: 'All', value: 0 , selected: true },
     { name: 'Community Organizations', value: 1, selected: false  },
     { name: 'Media', value: 2 , selected: false },
     { name: 'Foreign Organizations', value: 3 , selected: false },

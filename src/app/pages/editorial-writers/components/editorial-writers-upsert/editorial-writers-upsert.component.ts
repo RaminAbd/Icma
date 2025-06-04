@@ -1,46 +1,40 @@
 import {Component, inject} from '@angular/core';
-import {CustomEditorComponent} from '../../../../../components/custom-editor/custom-editor.component';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslatePipe} from '@ngx-translate/core';
 import {
   EditorialUpsertService
-} from '../../../../admin-editorials/shared/components/editorial-upsert/editorial-upsert.service';
+} from '../../../admin-editorials/shared/components/editorial-upsert/editorial-upsert.service';
 import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {EditorialsRequestModel} from '../../../../admin-editorials/shared/models/editorials-request.model';
-import {ProgramsUpsertService} from './programs-upsert.service';
-import {ProgramsRequestModel} from '../../models/programs-request.model';
-import {DatePicker} from 'primeng/datepicker';
+import {EditorialsRequestModel} from '../../../admin-editorials/shared/models/editorials-request.model';
+import {EditorialWritersUpsertService} from './editorial-writers-upsert.service';
+import {EditorialWritersRequestModel} from '../../models/editorial-writers-request.model';
 
 @Component({
-  selector: 'app-programs-upsert',
+  selector: 'app-editorial-writers-upsert',
   imports: [
-    CustomEditorComponent,
-    NgForOf,
     NgIf,
     ReactiveFormsModule,
     TranslatePipe,
-    FormsModule,
     NgClass,
-    DatePicker
+    FormsModule,
+    NgForOf
   ],
-  templateUrl: './programs-upsert.component.html',
-  styleUrl: './programs-upsert.component.scss'
+  templateUrl: './editorial-writers-upsert.component.html',
+  styleUrl: './editorial-writers-upsert.component.scss'
 })
-export class ProgramsUpsertComponent {
-  private service: ProgramsUpsertService = inject(ProgramsUpsertService);
+export class EditorialWritersUpsertComponent {
+  private service: EditorialWritersUpsertService = inject(EditorialWritersUpsertService);
   public config: DynamicDialogConfig = inject(DynamicDialogConfig);
   public ref: DynamicDialogRef = inject(DynamicDialogRef);
-  request: ProgramsRequestModel = new ProgramsRequestModel();
+  request: EditorialWritersRequestModel = new EditorialWritersRequestModel();
   isSubmitted: boolean = false;
-  date:any;
   constructor() {
     this.service.component = this;
     this.request = this.config.data;
-    this.date= new Date(this.request.deadline)
   }
 
-  getFile(e: any) {
+  getWriterFile(e: any) {
     this.request.image.fileLoading = true;
     this.service.getFile(e, (resp: any) => {
       this.request.image.fileLoading = false;
