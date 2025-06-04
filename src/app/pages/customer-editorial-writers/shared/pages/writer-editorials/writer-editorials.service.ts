@@ -13,7 +13,7 @@ export class WriterEditorialsService {
   constructor() {}
   getAll(){
     const req ={
-      id:this.component.id,
+      writerId:this.component.id,
       lang:this.translate.currentLang
     }
     this.service.GetAllByWriter(req).subscribe(resp=>{

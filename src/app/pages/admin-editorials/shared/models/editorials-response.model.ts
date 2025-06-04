@@ -2,11 +2,12 @@ import { FileModel } from '../../../../core/models/File.model';
 
 export class EditorialsResponseModel {
   id: string;
-  createdAt: any;
-  name: string;
+  title: string;
   description: string;
+  biography: string;
+  writerId: string;
   writerName: string;
-  writerImage: FileModel = new FileModel();
-  image: FileModel = new FileModel();
-  timeDiff:string
+  image: string;
+  writerImage: string;
+  createdAt: string;
 }

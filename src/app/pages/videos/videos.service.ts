@@ -32,7 +32,7 @@ export class VideosService {
         );
         let changed = sorted.map((video: GalleryVideosResponseModel) => ({
           ...video,
-          // safeUrl: this.getSafeVideoUrl(video.videoUrl),
+          safeUrl: this.getSafeVideoUrl(video.videoUrl),
           description: this.processDescription(video.description),
         }));
         this.component.videos = structuredClone(changed);

@@ -23,7 +23,7 @@
         </div>
         <div class="scroll">
           <div class="items right-border-bottom">
-            <div class="item" *ngFor="let item of videos">
+            <div class="item" *ngFor="let item of videos" (click)="openImage(item)">
               <div class="image">
                 <img [src]="item.image" alt="" />
               </div>
@@ -70,31 +70,31 @@
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
-<!--<div-->
-<!--  class="lightbox-backdrop"-->
-<!--  *ngIf="showLightBox"-->
-<!--  (click)="closeLightbox()"-->
-<!--  @fadeInOut-->
-<!--&gt;-->
-<!--  <div class="lightbox-content" (click)="$event.stopPropagation()">-->
-<!--    <div class="image" @zoomInOut>-->
-<!--      <div class="image-heading">-->
-<!--        <p>{{ selectedVideo.title }}</p>-->
-<!--&lt;!&ndash;        <p>{{ selectedVideo.createdAt | date : "MMM dd, yyyy HH:mm" }}</p>&ndash;&gt;-->
-<!--      </div>-->
-<!--      <iframe-->
-<!--        style="max-width: 100%; max-height: 100%"-->
-<!--        width="860"-->
-<!--        height="515"-->
-<!--        [src]="selectedVideo.safeUrl"-->
-<!--        frameborder="0"-->
-<!--        sandbox="allow-same-origin allow-scripts allow-popups"-->
-<!--        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"-->
-<!--        allowfullscreen-->
-<!--      ></iframe>-->
-<!--    </div>-->
-<!--    <span class="close-btn" (click)="closeLightbox()">&times;</span>-->
-<!--  </div>-->
-<!--</div>-->
+<div
+  class="lightbox-backdrop"
+  *ngIf="showLightBox"
+  (click)="closeLightbox()"
+  @fadeInOut
+>
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <div class="image" @zoomInOut>
+      <div class="image-heading">
+        <p>{{ selectedVideo.title }}</p>
+<!--        <p>{{ selectedVideo.createdAt | date : "MMM dd, yyyy HH:mm" }}</p>-->
+      </div>
+      <iframe
+        style="max-width: 100%; max-height: 100%"
+        width="860"
+        height="515"
+        [src]="selectedVideo.safeUrl"
+        frameborder="0"
+        sandbox="allow-same-origin allow-scripts allow-popups"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <span class="close-btn" (click)="closeLightbox()">&times;</span>
+  </div>
+</div>
 
-<!--<div class="blur" *ngIf="showLightBox"></div>-->
+<div class="blur" *ngIf="showLightBox"></div>
