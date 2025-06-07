@@ -1,11 +1,11 @@
 import { inject, Injectable } from '@angular/core';
-import { GalleryVideosApiService } from '../gallery-videos/shared/services/gallery-videos.api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DialogService } from 'primeng/dynamicdialog';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ApplicationMessageCenterService } from '../../core/services/ApplicationMessageCenter.service';
-import { GalleryVideosResponseModel } from '../gallery-videos/shared/models/gallery-videos-response.model';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { GalleryVideosApiService } from '../gallery-videos/shared/services/gallery-videos.api.service';
 import { VideosComponent } from './videos.component';
+import { GalleryVideosResponseModel } from '../gallery-videos/shared/models/gallery-videos-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,17 +26,27 @@ export class VideosService {
     this.service
       .GetAllByLang(this.service.serviceUrl, this.translate.currentLang)
       .subscribe((resp) => {
-        let sorted = resp.data.sort(
+        let sorted = structuredClone(resp.data).sort(
           (a: any, b: any) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
-        let changed = sorted.map((video: GalleryVideosResponseModel) => ({
-          ...video,
-          safeUrl: this.getSafeVideoUrl(video.videoUrl),
-          description: this.processDescription(video.description),
-        }));
-        this.component.videos = structuredClone(changed);
-        this.component.copy = structuredClone(changed);
+
+        this.component.videos = structuredClone(sorted).map(
+          (video: GalleryVideosResponseModel) => ({
+            ...video,
+            safeUrl: video.videoUrl ? this.getSafeVideoUrl(video.videoUrl) : '',
+            description: this.processDescription(video.description),
+          })
+        );
+        this.component.copy = structuredClone(sorted).map(
+          (video: GalleryVideosResponseModel) => ({
+            ...video,
+            safeUrl: video.videoUrl ? this.getSafeVideoUrl(video.videoUrl) : '',
+            description: this.processDescription(video.description),
+          })
+        );
+
+        console.log(this.component.videos);
       });
   }
 

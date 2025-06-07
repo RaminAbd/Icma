@@ -40,7 +40,7 @@ export class BaseCrudApiService extends BaseApiService {
   }
 
   GetByIdByLang(serviceUrl: string, req: any) {
-    return this.get(serviceUrl + 'get/', null, req);
+    return this.get(serviceUrl + 'get', null, req);
   }
 
   GetAllWithPaging(serviceUrl: string, req: any) {

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import {DatePipe, NgClass, NgForOf, NgIf} from '@angular/common';
+import { DatePipe, NgClass, NgForOf, NgIf } from '@angular/common';
 import { GalleryVideosResponseModel } from '../gallery-videos/shared/models/gallery-videos-response.model';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { VideosService } from './videos.service';
@@ -57,6 +57,10 @@ export class VideosComponent {
 
   select(item: any) {
     console.log(item, this.copy);
+    let deepCopy = structuredClone(this.copy).map((item) => ({
+      ...item,
+      safeUrl: this.service.getSafeVideoUrl(item.videoUrl),
+    }));
     this.types.forEach((type) => {
       type.selected = false;
       if (item.value !== type.value) {
@@ -67,11 +71,9 @@ export class VideosComponent {
     });
     item.selected = true;
     if (item.value === 0) {
-      this.videos = structuredClone(this.copy);
+      this.videos = deepCopy;
     } else {
-      this.videos = structuredClone(this.copy).filter(
-        (file) => file.resourceType === item.value
-      );
+      this.videos = deepCopy.filter((file) => file.resourceType === item.value);
     }
   }
 }

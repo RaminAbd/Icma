@@ -2,12 +2,14 @@ import { Component, inject } from '@angular/core';
 import { ProgramsResponseModel } from '../admin-programs/shared/models/programs-response.model';
 import { ProgramsService } from './programs.service';
 import {DatePipe, NgForOf} from '@angular/common';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-programs',
   imports: [
     NgForOf,
-    DatePipe
+    DatePipe,
+    RouterLink
   ],
   templateUrl: './programs.component.html',
   styleUrl: './programs.component.scss',

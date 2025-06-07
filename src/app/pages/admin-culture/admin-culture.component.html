@@ -1,0 +1,9 @@
+<div>
+  <app-table
+    [Array]="cultures"
+    [cols]="cols"
+    [TableName]="'Cultures'"
+    [showCreate]="true"
+    (Action)="tableActionHandler($event)"
+  ></app-table>
+</div>

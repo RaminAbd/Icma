@@ -5,7 +5,7 @@
 
   <div class="cnt">
     <div class="items right-border-bottom">
-      <div class="item" *ngFor="let item of works">
+      <div class="item" *ngFor="let item of works" [routerLink]="item.id">
         <div class="image">
           <img [src]="item.image" alt="" />
         </div>

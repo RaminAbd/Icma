@@ -36,6 +36,8 @@ export class GalleryVideosService {
           ...video,
           safeUrl:video.videoUrl?this.getSafeVideoUrl(video.videoUrl):''
         }));
+
+        console.log(this.component.videos);
       });
   }
 
