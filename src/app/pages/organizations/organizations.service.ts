@@ -1,16 +1,16 @@
-import {inject, Injectable} from '@angular/core';
-import {OrganizationsApiService} from '../admin-organizations/shared/services/organizations.api.service';
-import {TranslateService} from '@ngx-translate/core';
-import {OrganizationsComponent} from './organizations.component';
+import { inject, Injectable } from '@angular/core';
+import { OrganizationsApiService } from '../admin-organizations/shared/services/organizations.api.service';
+import { TranslateService } from '@ngx-translate/core';
+import { OrganizationsComponent } from './organizations.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrganizationsService {
   private service: OrganizationsApiService = inject(OrganizationsApiService);
   private translate: TranslateService = inject(TranslateService);
-  component:OrganizationsComponent;
-  constructor() { }
+  component: OrganizationsComponent;
+  constructor() {}
 
   getAll() {
     this.service
@@ -18,6 +18,10 @@ export class OrganizationsService {
       .subscribe((resp) => {
         this.component.organizations = structuredClone(resp.data);
         this.component.copy = structuredClone(resp.data);
+        let item = this.component.types.find(
+          (x) => x.value === +this.component.type
+        );
+        this.component.select(item);
       });
   }
 }

@@ -43,14 +43,19 @@
         </div>
         <div class="scroll">
           <div class="items right-border-bottom">
-            <div class="item" *ngFor="let item of files">
+            <a
+              class="item"
+              *ngFor="let item of files"
+              [href]="item.pdf"
+              target="_blank"
+            >
               <div class="image">
                 <img [src]="item.image" alt="" />
               </div>
               <p>
                 {{ item.description }}
               </p>
-            </div>
+            </a>
           </div>
         </div>
       </div>

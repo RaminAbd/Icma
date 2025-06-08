@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { OrganizationsResponseModel } from '../admin-organizations/shared/models/organizations-response.model';
 import { OrganizationsService } from './organizations.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-organizations',
@@ -11,7 +12,9 @@ import {NgClass, NgForOf, NgIf} from '@angular/common';
 })
 export class OrganizationsComponent {
   private service: OrganizationsService = inject(OrganizationsService);
+  private route: ActivatedRoute = inject(ActivatedRoute);
   organizations: OrganizationsResponseModel[] = [];
+  type = this.route.snapshot.paramMap.get('type') as string;
   copy: OrganizationsResponseModel[] = [];
   types: any[] = [
     { name: 'All', value: 0 , selected: true },
@@ -22,6 +25,7 @@ export class OrganizationsComponent {
   constructor() {
     this.service.component = this;
     this.service.getAll();
+
   }
 
   select(item: any) {

@@ -20,7 +20,7 @@ export class GuestChildrenRoutes {
       data: { title: 'Literature' },
     },
     {
-      path: 'organizations',
+      path: 'organizations/:type',
       component: OrganizationsComponent,
       data: { title: 'Organizations' },
     },
