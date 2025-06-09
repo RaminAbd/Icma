@@ -11,6 +11,9 @@ import { CultureComponent } from '../../../../pages/culture/culture.component';
 import { ProgramDetailsComponent } from '../../../../pages/programs/shared/pages/program-details/program-details.component';
 import { JobDetailsComponent } from '../../../../pages/jobs/shared/pages/job-details/job-details.component';
 import { CultureDetailsComponent } from '../../../../pages/culture/shared/pages/culture-details/culture-details.component';
+import {
+  EditorialDetailsComponent
+} from '../../../../pages/customer-editorial-writers/shared/pages/editorial-details/editorial-details.component';
 export class GuestChildrenRoutes {
   static children: Route[] = [
     { path: 'home', component: HomeComponent, data: { title: 'Home' } },
@@ -59,6 +62,11 @@ export class GuestChildrenRoutes {
       path: 'editorials/:id',
       component: WriterEditorialsComponent,
       data: { title: 'Editorials' },
+    },
+    {
+      path: 'editorials/details/:id',
+      component: EditorialDetailsComponent,
+      data: { title: 'Editorial' },
     },
     { path: 'videos', component: VideosComponent, data: { title: 'Videos' } },
 

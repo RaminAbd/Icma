@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="first-item">
-    <div class="back" routerLink="/culture">
+    <div class="back" routerLink="/editorials">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="13"
@@ -21,10 +21,19 @@
     <div class="detail-banner">
       <div class="content">
         <div class="writer">
-          <!--          <span>-->
-          <!--            {{ "Deadline" | translate }}:-->
-          <!--            &lt;!&ndash;            {{ response.deadline | date : "dd/MM/YYY" }}&ndash;&gt;-->
-          <!--          </span>-->
+          <img
+            style="
+              width: 50px;
+              border-radius: 100%;
+              height: 50px;
+              object-fit: cover;
+            "
+            [src]="response.writerImage"
+            alt=""
+          />
+          <div class="info">
+            <p>{{ response.writerName }}</p>
+          </div>
         </div>
 
         <div class="image" style="margin-top: 0">
@@ -32,10 +41,8 @@
         </div>
 
         <div class="items">
-          <div class="item">
-            <div class="text">
-              <p [innerHTML]="response.description" class="inner-content"></p>
-            </div>
+          <div class="text">
+            <p [innerHTML]="response.description" class="inner-content"></p>
           </div>
         </div>
       </div>
