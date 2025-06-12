@@ -19,12 +19,12 @@
       gap: 10px;
       border-radius: 12px;
       //background: var(--pr-grey);
-      border: 2px solid #f90;
+      border: 2px solid var(--primary-color);
       font-size: 17px;
       font-style: normal;
       font-weight: 600;
       line-height: normal;
-      color: #f90;
+      color:var(--primary-color);
     }
   }
   .items {

@@ -3,6 +3,9 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 769px) {
+    padding: 0px 20px;
+  }
   .first-item {
     display: flex;
     justify-content: center;
@@ -34,7 +37,7 @@
     width: 100%;
     margin-bottom: 20px;
     @media (max-width: 769px) {
-      padding: 0px 20px;
+      padding: 0px 00px;
     }
     p {
       color: #333;
@@ -43,6 +46,9 @@
       font-style: normal;
       font-weight: 900;
       line-height: normal;
+      @media (max-width: 769px) {
+        font-size: 23px;
+      }
     }
   }
   .detail-banner {
@@ -54,7 +60,7 @@
       flex-direction: column;
       width: 100%;
       gap: 32px;
-      padding: 0px 20px;
+      padding: 0px 0px;
     }
     .banner {
       padding-top: 65px;
@@ -148,7 +154,7 @@
             gap: 10px;
             align-self: stretch;
             border-radius: 8px;
-            background: #f90;
+            background: var(--primary-color);
             color: #fff;
             font-size: 14px;
             font-style: normal;
@@ -168,7 +174,7 @@
     .category {
       margin-top: 17px;
       p {
-        color: #f90;
+        color: var(--primary-color);
         font-size: 14px;
         font-style: normal;
         font-weight: 600;

@@ -1,13 +1,18 @@
 <div class="wrapper">
   <div class="heading">
-    <h1>Literature</h1>
+    <h1>{{ 'Literature' | translate }}</h1>
   </div>
 
   <div class="cnt">
     <div class="benefits">
       <div class="benefits-container">
         <div class="fixed">
-          <div class="menu">
+          <div class="m-heading" (click)="showMobMenu = !showMobMenu">
+            <p>Category</p>
+            <i class="pi pi-chevron-down" *ngIf="!showMobMenu"></i>
+            <i class="pi pi-chevron-up" *ngIf="showMobMenu"></i>
+          </div>
+          <div class="menu" *ngIf="!isMobile ||showMobMenu">
             <div class="m-items">
               <div
                 class="item"
@@ -19,7 +24,7 @@
                   [ngClass]="{ selected: item.selected }"
                   (click)="toggleChildren(item)"
                 >
-                  <p>{{ item.name }}</p>
+                  <p>{{ item.name | translate}}</p>
                   <div class="icon" *ngIf="item.children">
                     <i class="pi pi-angle-up" *ngIf="item.isOpen"></i>
                     <i class="pi pi-angle-down" *ngIf="!item.isOpen"></i>
@@ -33,7 +38,7 @@
                     (click)="selectChild($event, item, child)"
                   >
                     <div class="name">
-                      <p>{{ child.name }}</p>
+                      <p>{{ child.name | translate }}</p>
                     </div>
                   </div>
                 </div>
@@ -41,6 +46,7 @@
             </div>
           </div>
         </div>
+
         <div class="scroll">
           <div class="items right-border-bottom">
             <a

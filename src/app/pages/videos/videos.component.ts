@@ -3,10 +3,11 @@ import { DatePipe, NgClass, NgForOf, NgIf } from '@angular/common';
 import { GalleryVideosResponseModel } from '../gallery-videos/shared/models/gallery-videos-response.model';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { VideosService } from './videos.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-videos',
-  imports: [DatePipe, NgForOf, NgIf, NgClass],
+  imports: [DatePipe, NgForOf, NgIf, NgClass, TranslatePipe],
   templateUrl: './videos.component.html',
   styleUrl: './videos.component.scss',
   animations: [
@@ -40,9 +41,19 @@ export class VideosComponent {
     { name: 'Reportage', value: 1, selected: false },
     { name: 'Program', value: 2, selected: false },
   ];
+  showMobMenu:boolean = false;
+
   constructor() {
     this.service.component = this;
     this.service.getAll();
+    this.checkWindowSize()
+    window.addEventListener('resize', () => {
+      this.checkWindowSize();
+    });
+  }
+  isMobile:boolean = false;
+  checkWindowSize(){
+    this.isMobile = window.innerWidth <= 769;
   }
 
   openImage(item: any) {

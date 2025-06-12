@@ -59,6 +59,12 @@ export class HomeComponent {
   selectedVideo: GalleryVideosResponseModel = new GalleryVideosResponseModel();
   showLightBox: boolean = false;
   writers: EditorialWritersResponseModel[] = [];
+  responsiveOptions = [
+    {
+      breakpoint: '769px',
+      height: '373px',
+    },
+  ];
   constructor() {
     this.service.component = this;
     this.service.getAllFiles();

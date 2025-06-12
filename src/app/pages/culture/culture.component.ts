@@ -5,13 +5,15 @@ import {ProgramsResponseModel} from '../admin-programs/shared/models/programs-re
 import {CultureService} from './culture.service';
 import {CultureResponseModel} from '../admin-culture/shared/models/culture-response.model';
 import {RouterLink} from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-culture',
   imports: [
     DatePipe,
     NgForOf,
-    RouterLink
+    RouterLink,
+    TranslatePipe
   ],
   templateUrl: './culture.component.html',
   styleUrl: './culture.component.scss'

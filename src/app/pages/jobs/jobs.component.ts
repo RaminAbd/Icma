@@ -3,13 +3,15 @@ import { WorksResponseModel } from '../admin-works/shared/models/works-response.
 import { JobsService } from './jobs.service';
 import {DatePipe, NgForOf} from '@angular/common';
 import {RouterLink} from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-jobs',
   imports: [
     DatePipe,
     NgForOf,
-    RouterLink
+    RouterLink,
+    TranslatePipe
   ],
   templateUrl: './jobs.component.html',
   styleUrl: './jobs.component.scss',

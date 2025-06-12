@@ -1,13 +1,18 @@
 <div class="wrapper">
   <div class="heading">
-    <h1>Organizations</h1>
+    <h1>{{ 'Organizations' | translate }}</h1>
   </div>
 
   <div class="cnt">
     <div class="benefits">
       <div class="benefits-container">
         <div class="fixed">
-          <div class="menu">
+          <div class="m-heading" (click)="showMobMenu = !showMobMenu">
+            <p>Category</p>
+            <i class="pi pi-chevron-down" *ngIf="!showMobMenu"></i>
+            <i class="pi pi-chevron-up" *ngIf="showMobMenu"></i>
+          </div>
+          <div class="menu" *ngIf="!isMobile ||showMobMenu">
             <div class="m-items">
               <div
                 class="item"
@@ -15,7 +20,7 @@
                 (click)="select(item)"
               >
                 <div class="name" [ngClass]="{ selected: item.selected }">
-                  <p>{{ item.name }}</p>
+                  <p>{{ item.name | translate}}</p>
                 </div>
               </div>
             </div>

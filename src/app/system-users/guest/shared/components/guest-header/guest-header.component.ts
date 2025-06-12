@@ -3,6 +3,7 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {NgClass, NgIf} from '@angular/common';
 import {RouterLink, RouterLinkActive} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-guest-header',
@@ -10,11 +11,32 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
     TranslatePipe,
     NgClass,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    FormsModule
   ],
   templateUrl: './guest-header.component.html',
   styleUrl: './guest-header.component.scss',
   animations: [
+    trigger('fade', [
+      state('visible', style({ opacity: 1 })),
+      state('hidden', style({ opacity: 0 })),
+      transition('visible <=> hidden', animate('500ms ease-in-out')),
+    ]),
+    trigger('switchAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate(
+          '400ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '400ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-20px)' }),
+        ),
+      ]),
+    ]),
     trigger('menuExpand', [
       state(
         'open',
@@ -22,14 +44,14 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
           width: '*',
           visibility: 'visible',
           display: 'block',
-        })
+        }),
       ),
       state(
         'closed',
         style({
           width: '0px',
           visibility: 'hidden',
-        })
+        }),
       ),
       transition('open <=> closed', [animate('500ms ease-in-out')]),
     ]),
@@ -45,7 +67,7 @@ export class GuestHeaderComponent {
   }
   isHidden = false;
   showMenu: boolean = false;
-
+  searchText:string
   toggleMenu() {
     this.showMenu = !this.showMenu;
     var questPages = document.querySelector('.burger') as Element;
@@ -71,5 +93,18 @@ export class GuestHeaderComponent {
     if (!this.showMenu) {
       this.isHidden = true;
     }
+  }
+
+
+  resetSearch() {
+    // this.news = [];
+    // this.showEmpty = false;
+    // this.searchLoading = false;
+    // this.searchText = '';
+    // this.closeSearch();
+  }
+
+  goToSearchResult() {
+    // this.router.navigate(['/search/', this.searchText]);
   }
 }

@@ -32,7 +32,7 @@
   <div class="cnt">
     <div class="item eu">
       <img src="eu.svg" alt="" />
-      <h6>Our mission</h6>
+      <h6>{{ 'Our mission' | translate }}</h6>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -41,7 +41,7 @@
     </div>
     <div class="item inf">
       <img src="about1.png" alt="" />
-      <h5>Informing people of Georgia</h5>
+      <h5>{{ 'Informing people of Georgia' | translate }}</h5>
       <ul style="padding-left: 24px;">
         <li>Lorem ipsum</li>
         <li>Lorem ipsum</li>
@@ -52,9 +52,9 @@
     <div class="item double">
       <div class="lit">
         <img src="about2.png" alt="" />
-        <h4>{{ files.length }}+ Literatures</h4>
+        <h4>{{ files.length }}+ {{ 'Literatures'|translate }}</h4>
         <button routerLink="/literature">
-          Take a look
+          {{ 'Take a look' | translate }}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="13"
@@ -71,7 +71,7 @@
       </div>
       <div class="pr">
         <button routerLink="/programs">
-          Our Programs
+          {{ 'Our Programs' | translate }}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="13"
@@ -94,7 +94,7 @@
         accusantium Sed ut perspiciatis unde omnis
       </h5>
       <button routerLink="/videos">
-        Our Gallery
+        {{ 'Our Gallery' | translate }}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="13"
@@ -114,8 +114,8 @@
 <section id="third" class="third">
   <div class="cnt">
     <div class="heading">
-      <h3>Literature</h3>
-      <p routerLink="/literature">See all</p>
+      <h3>{{ 'Literature' | translate }}</h3>
+      <p routerLink="/literature">{{ 'See all' | translate }}</p>
     </div>
     <div class="items">
       <a
@@ -137,8 +137,8 @@
 <section id="fourth" class="fourth">
   <div class="cnt">
     <div class="heading">
-      <h3>Organizations</h3>
-      <p routerLink="/organizations/0">See all</p>
+      <h3>{{ 'Organizations' | translate }}</h3>
+      <p routerLink="/organizations/0">{{ 'See all' | translate }}</p>
     </div>
     <div class="items">
       <div class="item" *ngFor="let item of orgTypes" routerLink="/organizations/{{item.value}}">
@@ -165,8 +165,8 @@
 <section id="fifth" class="fifth">
   <div class="cnt">
     <div class="heading">
-      <h3>Programs</h3>
-      <p routerLink="/programs">See all</p>
+      <h3>{{ 'Programs' | translate }}</h3>
+      <p routerLink="/programs">{{ 'See all' | translate }}</p>
     </div>
     <div class="items">
       <div class="item" *ngFor="let item of programs" [routerLink]="item.id">
@@ -179,7 +179,7 @@
         <h4>{{ item.title }}</h4>
         <p [innerHTML]="item.description"></p>
         <div class="link">
-          <p>Details</p>
+          <p>{{ 'Details' | translate }}</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="13"
@@ -200,8 +200,8 @@
 <section id="eighth" class="eighth">
   <div class="cnt">
     <div class="heading">
-      <h3>Editorials</h3>
-      <p routerLink="/editorials">See all</p>
+      <h3>{{ 'Editorials' | translate }}</h3>
+      <p routerLink="/editorials">{{ 'See all' | translate }}</p>
     </div>
     <div class="cus-news-wrapper news-items">
       <!--      [routerLink]="'/news/details/' + item.id"-->
@@ -241,8 +241,8 @@
 <section id="sixth" class="sixth">
   <div class="cnt">
     <div class="heading">
-      <h3>Videos</h3>
-      <p routerLink="/videos">See all</p>
+      <h3>{{ 'Videos' | translate }}</h3>
+      <p routerLink="/videos">{{ 'See all' | translate }}</p>
     </div>
     <div class="items right-border-bottom">
       <div class="item" *ngFor="let item of videos" (click)="openImage(item)">

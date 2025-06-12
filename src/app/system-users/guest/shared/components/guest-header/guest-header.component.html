@@ -56,7 +56,7 @@
       </div>
     </div>
     <div class="middle">
-      <p>"Supporting local voices under fire in Ukraine"</p>
+      <p>"{{ 'Supporting local voices under fire in Ukraine' | translate }}"</p>
     </div>
 
     <div class="bottom">
@@ -79,7 +79,7 @@
                 routerLink="organizations/0"
                 [routerLinkActive]="['active']"
                 aria-label="organizations"
-                >{{ "Organization" | translate }}</a
+                >{{ "Organizations" | translate }}</a
               >
             </li>
             <li>
@@ -120,7 +120,7 @@
         </nav>
       </div>
       <div class="search">
-        <p>SEARCH</p>
+        <p>{{ 'Search' | translate }}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="15"
@@ -139,47 +139,116 @@
     </div>
   </div>
 </div>
-<div class="mobile-header" id="mob">
-  <div class="row">
-    <a routerLink="/" class="logo">
+<header class="header mobile" id="mob">
+  <div class="row1">
+    <a routerLink="/" class="logo" aria-label="logo" (click)="closeBurger()">
       <img src="logo.svg" alt="" />
     </a>
-    <div class="menu-burger burger" (click)="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <nav
-    (@menuExpand.done)="onAnimationDone()"
-    [ngClass]="{ hidden: isHidden }"
-    [@menuExpand]="showMenu ? 'open' : 'closed'"
-  >
-    <div class="nav-links">
-      <div class="nav">
-        <ul>
-          <li>
-            <a href="#first" aria-label="home" (click)="closeBurger()">{{
-              "Home" | translate
-            }}</a>
-          </li>
-          <li>
-            <a href="#fourth" aria-label="services" (click)="closeBurger()">{{
-              "Services" | translate
-            }}</a>
-          </li>
-          <li>
-            <a href="#fifth" aria-label="packages" (click)="closeBurger()">{{
-              "Packages" | translate
-            }}</a>
-          </li>
-          <li>
-            <a href="#sixth" aria-label="contact" (click)="closeBurger()">{{
-              "Contact Us" | translate
-            }}</a>
-          </li>
-        </ul>
+
+    <div class="burger-back">
+      <div class="menu-burger burger" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
+  </div>
+
+  <nav
+    [@menuExpand]="showMenu ? 'open' : 'closed'"
+    (@menuExpand.done)="onAnimationDone()"
+    [ngClass]="{ hidden: isHidden }"
+  >
+    <div class="scroll-container">
+      <div class="row1 mobile-search">
+        <div class="input">
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            placeholder="Search..."
+            (keydown.enter)="goToSearchResult(); resetSearch(); toggleMenu()"
+          />
+          <div
+            class="icon"
+            (click)="goToSearchResult(); resetSearch(); toggleMenu()"
+          >
+            <i class="pi pi-search"></i>
+          </div>
+        </div>
+      </div>
+      <div class="row1 w-c">
+        <div class="weather-currency">
+          <!--            <div class="weather">-->
+          <!--              <img [src]="weather.icon" alt="" />-->
+          <!--              <p>Tbilisi {{ weather.celsiusTemperature }} °C</p>-->
+          <!--            </div>-->
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a
+            (click)="toggleMenu()"
+            routerLink="literature"
+            [routerLinkActive]="['active']"
+            aria-label="projects"
+          >{{ "Literature" | translate }}</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="toggleMenu()"
+            routerLink="organizations/0"
+            [routerLinkActive]="['active']"
+            aria-label="organizations"
+          >{{ "Organizations" | translate }}</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="toggleMenu()"
+            routerLink="programs"
+            [routerLinkActive]="['active']"
+            aria-label="news"
+          >{{ "Programs" | translate }}</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="toggleMenu()"
+            routerLink="culture"
+            [routerLinkActive]="['active']"
+            aria-label="culture"
+          >{{ "Culture" | translate }}</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="toggleMenu()"
+            routerLink="editorials"
+            [routerLinkActive]="['active']"
+            aria-label="contact"
+          >{{ "Editorials" | translate }}</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="toggleMenu()"
+            routerLink="videos"
+            [routerLinkActive]="['active']"
+            aria-label="contact"
+          >{{ "Videos" | translate }}</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="toggleMenu()"
+            routerLink="jobs"
+            [routerLinkActive]="['active']"
+            aria-label="jobs"
+          >{{ "Jobs" | translate }}</a
+          >
+        </li>
+      </ul>
+    </div>
   </nav>
-</div>
+</header>

@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { ResourceFilesResponseModel } from '../admin-files/shared/models/resource-files-response.model';
 import { LiteratureService } from './literature.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-literature',
-  imports: [NgForOf, NgClass, NgIf],
+  imports: [NgForOf, NgClass, NgIf, TranslatePipe],
   templateUrl: './literature.component.html',
   styleUrl: './literature.component.scss',
 })
@@ -33,12 +34,20 @@ export class LiteratureComponent {
     { name: 'Library', value: 8, selected: false },
     { name: 'EU (European Union)', value: 9, selected: false },
   ];
+  showMobMenu:boolean = false;
 
   constructor() {
     this.service.component = this;
     this.service.getAll();
+    this.checkWindowSize()
+    window.addEventListener('resize', () => {
+      this.checkWindowSize();
+    });
   }
-
+  isMobile:boolean = false;
+  checkWindowSize(){
+    this.isMobile = window.innerWidth <= 769;
+  }
   select(item: any) {
     console.log(item, this.copy)
     this.types.forEach(type => {

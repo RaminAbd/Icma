@@ -3,10 +3,11 @@ import { OrganizationsResponseModel } from '../admin-organizations/shared/models
 import { OrganizationsService } from './organizations.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-organizations',
-  imports: [NgForOf, NgIf, NgClass],
+  imports: [NgForOf, NgIf, NgClass, TranslatePipe],
   templateUrl: './organizations.component.html',
   styleUrl: './organizations.component.scss',
 })
@@ -25,9 +26,16 @@ export class OrganizationsComponent {
   constructor() {
     this.service.component = this;
     this.service.getAll();
-
+    this.checkWindowSize()
+    window.addEventListener('resize', () => {
+      this.checkWindowSize();
+    });
   }
-
+  showMobMenu:boolean = false;
+  isMobile:boolean = false;
+  checkWindowSize(){
+    this.isMobile = window.innerWidth <= 769;
+  }
   select(item: any) {
     console.log(item, this.copy);
     this.types.forEach((type) => {
