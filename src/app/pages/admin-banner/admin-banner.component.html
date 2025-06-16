@@ -1,0 +1,9 @@
+<div>
+  <app-table
+    [Array]="banners"
+    [cols]="cols"
+    [TableName]="'Banners'"
+    [showCreate]="true"
+    (Action)="tableActionHandler($event)"
+  ></app-table>
+</div>

@@ -25,23 +25,9 @@
                   (click)="toggleChildren(item)"
                 >
                   <p>{{ item.name | translate}}</p>
-                  <div class="icon" *ngIf="item.children">
-                    <i class="pi pi-angle-up" *ngIf="item.isOpen"></i>
-                    <i class="pi pi-angle-down" *ngIf="!item.isOpen"></i>
-                  </div>
+
                 </div>
-                <div class="children" *ngIf="item.children && item.isOpen">
-                  <div
-                    class="child"
-                    *ngFor="let child of item.children"
-                    [ngClass]="{ selected: child.selected }"
-                    (click)="selectChild($event, item, child)"
-                  >
-                    <div class="name">
-                      <p>{{ child.name | translate }}</p>
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </div>
           </div>

@@ -14,6 +14,9 @@ import { CultureDetailsComponent } from '../../../../pages/culture/shared/pages/
 import {
   EditorialDetailsComponent
 } from '../../../../pages/customer-editorial-writers/shared/pages/editorial-details/editorial-details.component';
+import {GovernmentAgenciesComponent} from '../../../../pages/government-agencies/government-agencies.component';
+import {ImagesComponent} from '../../../../pages/images/images.component';
+import {SearchResultComponent} from '../../../../pages/search-result/search-result.component';
 export class GuestChildrenRoutes {
   static children: Route[] = [
     { path: 'home', component: HomeComponent, data: { title: 'Home' } },
@@ -26,6 +29,11 @@ export class GuestChildrenRoutes {
       path: 'organizations/:type',
       component: OrganizationsComponent,
       data: { title: 'Organizations' },
+    },
+    {
+      path: 'agencies/:type',
+      component: GovernmentAgenciesComponent,
+      data: { title: 'Government Agencies' },
     },
     {
       path: 'programs',
@@ -69,6 +77,12 @@ export class GuestChildrenRoutes {
       data: { title: 'Editorial' },
     },
     { path: 'videos', component: VideosComponent, data: { title: 'Videos' } },
+    { path: 'gallery', component: ImagesComponent, data: { title: 'Gallery' } },
+    {
+      path: 'search/:text',
+      component: SearchResultComponent,
+      data: { title: 'Search' },
+    },
 
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     // { path: '**', redirectTo: 'projects', pathMatch: 'full' },

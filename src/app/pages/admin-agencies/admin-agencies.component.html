@@ -1,0 +1,9 @@
+<div>
+  <app-table
+    [Array]="agencies"
+    [cols]="cols"
+    [TableName]="'Agencies'"
+    [showCreate]="true"
+    (Action)="tableActionHandler($event)"
+  ></app-table>
+</div>

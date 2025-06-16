@@ -15,24 +15,10 @@ export class LiteratureComponent {
   files: ResourceFilesResponseModel[] = [];
   copy: ResourceFilesResponseModel[] = [];
   types: any[] = [
-    { name: 'All', value: 0, selected: true },
-    {
-      name: 'General',
-      value: 1,
-      selected: false,
-      isOpen:false,
-      children: [
-        { name: 'Government', value: 2, selected: false },
-        { name: 'Ministries', value: 3, selected: false },
-        { name: 'Governorate', value: 4, selected: false },
-        { name: 'Municipalities', value: 5, selected: false },
-        { name: 'Social Services', value: 6, selected: false },
-      ],
-    },
-
-    { name: 'Laws', value: 7, selected: false },
-    { name: 'Library', value: 8, selected: false },
-    { name: 'EU (European Union)', value: 9, selected: false },
+    {name:'Qanun', value:1, selected: true},
+    {name:'Sənədlər', value:2, selected: false},
+    {name:'Oxu materiali', value:3, selected: false},
+    {name:'Aİ (Avropa İttifaqı)', value:4, selected: false},
   ];
   showMobMenu:boolean = false;
 

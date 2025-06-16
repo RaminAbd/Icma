@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="items">
+    <div class="item" *ngFor="let item of images">
+      <img [src]="item.image" alt="" (click)="openImage(item)" />
+      <div class="info">
+        <p>{{ item.title }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="lightbox-backdrop"
+  *ngIf="showLightBox"
+  (click)="closeLightbox()"
+  @fadeInOut
+>
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <div class="image" @zoomInOut>
+      <div class="image-heading">
+        <p>{{ selectedImage.title }}</p>
+        <p>{{ selectedImage.createdAt | date : "MMM dd, yyyy HH:mm" }}</p>
+      </div>
+      <img [src]="selectedImage.image" alt="Selected Image" />
+    </div>
+    <span class="close-btn" (click)="closeLightbox()">&times;</span>
+  </div>
+</div>
+
+<div class="blur" *ngIf="showLightBox"></div>

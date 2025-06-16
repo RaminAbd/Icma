@@ -8,9 +8,16 @@ import {AdminWorksComponent} from '../../../../pages/admin-works/admin-works.com
 import {AdminFilesComponent} from '../../../../pages/admin-files/admin-files.component';
 import {EditorialWritersComponent} from '../../../../pages/editorial-writers/editorial-writers.component';
 import {AdminCultureComponent} from '../../../../pages/admin-culture/admin-culture.component';
+import {AdminAgenciesComponent} from '../../../../pages/admin-agencies/admin-agencies.component';
+import {AdminBannerComponent} from '../../../../pages/admin-banner/admin-banner.component';
 
 export class AdminChildrenRoutes {
   static children: Route[] = [
+    {
+      path: 'banners',
+      component: AdminBannerComponent,
+      data: { title: 'Banners' },
+    },
     {
       path: 'editorials',
       component: AdminEditorialsComponent,
@@ -37,10 +44,15 @@ export class AdminChildrenRoutes {
       data: { title: 'Organizations' },
     },
     {
-      path: 'programs',
-      component: AdminProgramsComponent,
-      data: { title: 'Programs' },
+      path: 'agencies',
+      component: AdminAgenciesComponent,
+      data: { title: 'Agencies' },
     },
+    // {
+    //   path: 'programs',
+    //   component: AdminProgramsComponent,
+    //   data: { title: 'Programs' },
+    // },
     {
       path: 'culture',
       component: AdminCultureComponent,

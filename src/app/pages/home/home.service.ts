@@ -7,12 +7,14 @@ import { GalleryVideosApiService } from '../gallery-videos/shared/services/galle
 import { GalleryVideosResponseModel } from '../gallery-videos/shared/models/gallery-videos-response.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { EditorialWritersApiService } from '../editorial-writers/services/editorial-writers.api.service';
+import {BannersApiService} from '../admin-banner/shared/services/banners.api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HomeService {
   private service: ResourceFilesApiService = inject(ResourceFilesApiService);
+  private bannersService: BannersApiService = inject(BannersApiService);
   private translate: TranslateService = inject(TranslateService);
   private prService: ProgramsApiService = inject(ProgramsApiService);
   private videosService: GalleryVideosApiService = inject(
@@ -24,6 +26,14 @@ export class HomeService {
   private sanitizer: DomSanitizer = inject(DomSanitizer);
   constructor() {}
   component: HomeComponent;
+
+  getAllBanners() {
+    this.bannersService
+      .GetAllByLang(this.bannersService.serviceUrl, this.translate.currentLang)
+      .subscribe((resp) => {
+        this.component.images = structuredClone(resp.data).splice(0, 5);
+      });
+  }
 
   getAllFiles() {
     this.service

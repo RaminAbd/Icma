@@ -1,44 +1,47 @@
 import {Component, inject} from '@angular/core';
 import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {ResourceFilesUpsertService} from './resource-files-upsert.service';
-import {ResourceFilesRequestModel} from '../../models/resource-files-request.model';
-import {CustomEditorComponent} from '../../../../../components/custom-editor/custom-editor.component';
+import {OrganizationsRequestModel} from '../../../../admin-organizations/shared/models/organizations-request.model';
+import {AgencyUpsertService} from './agency-upsert.service';
 import {DropdownModule} from 'primeng/dropdown';
-import {FormsModule} from '@angular/forms';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-resource-files-upsert',
+  selector: 'app-agency-upsert',
   imports: [
-    CustomEditorComponent,
     DropdownModule,
-    FormsModule,
     NgForOf,
     NgIf,
-    TranslatePipe
+    ReactiveFormsModule,
+    TranslatePipe,
+    FormsModule,
+    NgClass
   ],
-  templateUrl: './resource-files-upsert.component.html',
-  styleUrl: './resource-files-upsert.component.scss'
+  templateUrl: './agency-upsert.component.html',
+  styleUrl: './agency-upsert.component.scss'
 })
-export class ResourceFilesUpsertComponent {
-  private service: ResourceFilesUpsertService = inject(ResourceFilesUpsertService);
+export class AgencyUpsertComponent {
+  private service: AgencyUpsertService = inject(AgencyUpsertService);
   public config: DynamicDialogConfig = inject(DynamicDialogConfig);
   public ref: DynamicDialogRef = inject(DynamicDialogRef);
-  request: ResourceFilesRequestModel = new ResourceFilesRequestModel();
+  request: OrganizationsRequestModel = new OrganizationsRequestModel();
   isSubmitted: boolean = false;
   types:any[]=[
-    {name:'Qanun', value:1},
-    {name:'Sənədlər', value:2},
-    {name:'Oxu materiali', value:3},
-    {name:'Aİ (Avropa İttifaqı)', value:4},
+    {name:'Nazirlik', value:1},
+    {name:'Quberniya', value:2},
+    {name:'Bələdiyyələr', value:3},
+    {name:'Ədliyyə evləri', value:4},
+    {name:'Sosial xidmətlər', value:5},
+    {name:'Polis', value:6},
+    {name:'Başqa', value:7},
   ]
+
 
   constructor() {
     this.service.component = this;
     this.request = this.config.data;
   }
-
   getFile(e: any) {
     this.request.image.fileLoading = true;
     this.service.getFile(e, (resp: any) => {
@@ -46,16 +49,6 @@ export class ResourceFilesUpsertComponent {
       this.request.image = resp.data;
       this.request.image.fakeFile = null;
       this.request.image.isValid = true;
-    });
-  }
-
-  getPDF(e: any) {
-    this.request.pdf.fileLoading = true;
-    this.service.getFile(e, (resp: any) => {
-      this.request.pdf.fileLoading = false;
-      this.request.pdf = resp.data;
-      this.request.pdf.fakeFile = null;
-      this.request.pdf.isValid = true;
     });
   }
 

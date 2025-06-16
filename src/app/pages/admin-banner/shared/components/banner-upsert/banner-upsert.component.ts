@@ -1,41 +1,39 @@
 import {Component, inject} from '@angular/core';
+import {
+  EditorialWritersUpsertService
+} from '../../../../editorial-writers/components/editorial-writers-upsert/editorial-writers-upsert.service';
 import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {FormsModule} from '@angular/forms';
+import {EditorialWritersRequestModel} from '../../../../editorial-writers/models/editorial-writers-request.model';
+import {BannerUpsertService} from './banner-upsert.service';
+import {BannersRequestModel} from '../../models/banners-request.model';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslatePipe} from '@ngx-translate/core';
-import {VideoUpsertService} from './video-upsert.service';
-import {GalleryVideosRequestModel} from '../../models/gallery-videos-request.model';
-import {CustomEditorComponent} from "../../../../../components/custom-editor/custom-editor.component";
-import {DropdownModule} from 'primeng/dropdown';
 
 @Component({
-  selector: 'app-video-upsert',
+  selector: 'app-banner-upsert',
   imports: [
-    FormsModule,
     NgForOf,
     NgIf,
+    ReactiveFormsModule,
     TranslatePipe,
     NgClass,
-    CustomEditorComponent,
-    DropdownModule
+    FormsModule
   ],
-  templateUrl: './video-upsert.component.html',
-  styleUrl: './video-upsert.component.scss'
+  templateUrl: './banner-upsert.component.html',
+  styleUrl: './banner-upsert.component.scss'
 })
-export class VideoUpsertComponent {
-  private service: VideoUpsertService = inject(VideoUpsertService);
+export class BannerUpsertComponent {
+  private service: BannerUpsertService = inject(BannerUpsertService);
   public config: DynamicDialogConfig = inject(DynamicDialogConfig);
   public ref: DynamicDialogRef = inject(DynamicDialogRef);
-  request: GalleryVideosRequestModel = new GalleryVideosRequestModel();
+  request: BannersRequestModel = new BannersRequestModel();
   isSubmitted: boolean = false;
-  types:any[]=[
-    {name:'Reportaj', value:1},
-    {name:'Veriliş', value:2},
-  ]
   constructor() {
     this.service.component = this;
     this.request = this.config.data;
   }
+
   getFile(e: any) {
     this.request.image.fileLoading = true;
     this.service.getFile(e, (resp: any) => {

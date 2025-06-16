@@ -4,4 +4,7 @@ export class ResourceFilesResponseModel {
   image: string;
   pdf: string;
   resourceType: number;
+  title: string;
+  type: number;
+  typeDescription: string;
 }

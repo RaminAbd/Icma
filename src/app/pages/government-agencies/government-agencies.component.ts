@@ -1,28 +1,37 @@
 import { Component, inject } from '@angular/core';
-import { OrganizationsResponseModel } from '../admin-organizations/shared/models/organizations-response.model';
-import { OrganizationsService } from './organizations.service';
-import { NgClass, NgForOf, NgIf } from '@angular/common';
+import { GovernmentAgenciesService } from './government-agencies.service';
 import { ActivatedRoute } from '@angular/router';
-import { TranslatePipe } from '@ngx-translate/core';
+import { OrganizationsResponseModel } from '../admin-organizations/shared/models/organizations-response.model';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-organizations',
-  imports: [NgForOf, NgIf, NgClass, TranslatePipe],
-  templateUrl: './organizations.component.html',
-  styleUrl: './organizations.component.scss',
+  selector: 'app-government-agencies',
+  imports: [
+    NgClass,
+    NgForOf,
+    NgIf,
+    TranslatePipe
+  ],
+  templateUrl: './government-agencies.component.html',
+  styleUrl: './government-agencies.component.scss',
 })
-export class OrganizationsComponent {
-  private service: OrganizationsService = inject(OrganizationsService);
+export class GovernmentAgenciesComponent {
+  private service: GovernmentAgenciesService = inject(
+    GovernmentAgenciesService
+  );
   private route: ActivatedRoute = inject(ActivatedRoute);
   organizations: OrganizationsResponseModel[] = [];
   type = this.route.snapshot.paramMap.get('type') as string;
   copy: OrganizationsResponseModel[] = [];
   types: any[] = [
-    { name: 'Media', value: 1, selected: true },
-    { name: 'İcma təşkilatları', value: 2, selected: false },
-    { name: 'Mərkəzi təşkilatlar', value: 3, selected: false },
-    { name: 'Beynəlxalq təşkilatlar', value: 4, selected: false },
-    { name: 'Proqramlar', value: 5, selected: false },
+    { name: 'Nazirlik', value: 1, selected: true },
+    { name: 'Quberniya', value: 2, selected: false },
+    { name: 'Bələdiyyələr', value: 3, selected: false },
+    { name: 'Ədliyyə evləri', value: 4, selected: false },
+    { name: 'Sosial xidmətlər', value: 5, selected: false },
+    { name: 'Polis', value: 6, selected: false },
+    { name: 'Başqa', value: 7, selected: false },
   ];
   constructor() {
     this.service.component = this;
