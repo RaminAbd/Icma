@@ -136,7 +136,7 @@ nav {
             justify-content: center;
             align-items: center;
             flex-shrink: 0;
-            background: #004494;
+            background: #013399;
             border-radius: 0px 8px 8px 0px;
             right: 0;
             position: absolute;
@@ -647,7 +647,7 @@ header {
       padding: 16px 40px;
       justify-content: space-between;
       align-items: center;
-      background: #0E3051;
+      background: #013399;
       width: 100%;
       .logo{
         img{
@@ -679,16 +679,16 @@ header {
       }
     }
     .middle{
-      padding: 24px ;
+      padding: 40px ;
       display: flex;
       align-items: center;
       justify-content: center;
       p{
-        color: #004494;
+        color: #013399;
         font-size: 16px;
-        font-style: normal;
         font-weight: 600;
         line-height: normal;
+        font-style: italic;
       }
     }
     .bottom{
@@ -936,6 +936,9 @@ nav,
         font-style: normal;
         font-weight: 600;
         line-height: normal;
+        &.active{
+          color: var(--primary-color);
+        }
       }
     }
   }

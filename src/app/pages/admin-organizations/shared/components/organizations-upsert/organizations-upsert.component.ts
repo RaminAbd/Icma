@@ -38,7 +38,7 @@ export class OrganizationsUpsertComponent {
     { name: 'İcma təşkilatları', value: 2 },
     { name: 'Mərkəzi təşkilatlar', value: 3 },
     { name: 'Beynəlxalq təşkilatlar', value: 4 },
-    { name: 'Proqramlar', value: 5 },
+    { name: 'Veriliş', value: 5 },
   ];
 
   constructor() {

@@ -397,7 +397,7 @@
         justify-content: flex-end;
         align-items: flex-start;
         gap: 10px;
-        border-right: 1px solid #004494;
+        border-right: 1px solid #013399;
         width:220px;
         @media (max-width: 769px) {
           position: absolute;
@@ -451,7 +451,7 @@
                 }
               }
               &.selected{
-                background: #004494;
+                background: #013399;
 
                 p{
                   color: #fff;
@@ -492,7 +492,7 @@
                 &.selected{
                   .name{
                     p{
-                      color: #004494;
+                      color: #013399;
                     }
                   }
                 }

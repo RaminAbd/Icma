@@ -22,7 +22,7 @@ export class OrganizationsComponent {
     { name: 'İcma təşkilatları', value: 2, selected: false },
     { name: 'Mərkəzi təşkilatlar', value: 3, selected: false },
     { name: 'Beynəlxalq təşkilatlar', value: 4, selected: false },
-    { name: 'Proqramlar', value: 5, selected: false },
+    { name: 'Veriliş', value: 5, selected: false },
   ];
   constructor() {
     this.service.component = this;
