@@ -7,6 +7,8 @@ export class OrganizationsRequestModel {
   description: MultilingualNameModel = new MultilingualNameModel();
   phoneNumber?: any;
   link?: any;
+  email?: any;
+  socialLink?: any;
   resourceType: number;
   image:FileModel=new FileModel();
 }

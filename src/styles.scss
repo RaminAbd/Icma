@@ -1,5 +1,12 @@
 @import url("../../Owlee/node_modules/primeicons/primeicons.css");
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+  font-family: "Fedra";
+  font-weight: 500;
+  src: url("../public/fonts/FedraSansAltPro-Book.woff");
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -17,7 +24,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "DM Sans", serif;
+  //font-family: "DM Sans", serif;
+  font-family: "Fedra", sans-serif;
+  font-optical-sizing: auto;
   //background: #fff;
   //overflow: hidden;
   &.blocked {
@@ -50,7 +59,7 @@ button {
 input,
 textarea {
   outline: none;
-  font-family: "Inter", serif;
+  font-family: "Fedra", sans-serif;
   font-style: normal;
   padding: 10px;
   background: var(--grey) !important;
@@ -72,7 +81,6 @@ h1,
 label,
 h2 {
   color: var(--text-color);
-  font-family: "Inter", serif;
   font-style: normal;
   margin: 0 !important;
 }

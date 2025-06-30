@@ -37,8 +37,7 @@
         accept="image/*"
       />
     </div>
-  </div>
-  <div class="row1">
+
     <div class="input-item" *ngFor="let item of request.name.items">
       <label>{{ "Name" | translate }} ( {{ item.languageName }} )</label>
       <input
@@ -52,28 +51,25 @@
       />
     </div>
   </div>
+
   <div class="row1">
     <div class="input-item">
       <label>{{ "Phone number" | translate }} </label>
-      <input
-        type="text"
-        [ngClass]="{
-          invalid: !request.phoneNumber && isSubmitted,
-        }"
-        [(ngModel)]="request.phoneNumber"
-      />
+      <input type="text" [(ngModel)]="request.phoneNumber" />
+    </div>
+    <div class="input-item">
+      <label>{{ "Link" | translate }} </label>
+      <input type="text" [(ngModel)]="request.link" />
     </div>
   </div>
   <div class="row1">
     <div class="input-item">
-      <label>{{ "Link" | translate }} </label>
-      <input
-        type="text"
-        [ngClass]="{
-          invalid: !request.link && isSubmitted,
-        }"
-        [(ngModel)]="request.link"
-      />
+      <label>{{ "Social Link" | translate }} </label>
+      <input type="text" [(ngModel)]="request.socialLink" />
+    </div>
+    <div class="input-item">
+      <label>{{ "Email" | translate }} </label>
+      <input type="text" [(ngModel)]="request.email" />
     </div>
   </div>
   <div class="row1">

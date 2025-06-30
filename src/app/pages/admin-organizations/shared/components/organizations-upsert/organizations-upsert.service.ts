@@ -87,8 +87,6 @@ export class OrganizationsUpsertService {
     });
 
     if (
-      !this.component.request.phoneNumber ||
-      !this.component.request.link ||
       !this.component.request.resourceType
     ) {
       result = false;

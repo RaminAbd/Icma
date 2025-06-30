@@ -6,4 +6,6 @@ export class OrganizationsResponseModel {
   link?: any;
   resourceType: number;
   image: string;
+  socialLink: string;
+  email: string;
 }

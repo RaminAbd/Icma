@@ -39,7 +39,7 @@ export class VideosComponent {
   types: any[] = [
     { name: 'All', value: 0, selected: true },
     { name: 'Reportage', value: 1, selected: false },
-    { name: 'Program', value: 2, selected: false },
+    { name: 'Veriliş', value: 2, selected: false },
   ];
   showMobMenu:boolean = false;
 
