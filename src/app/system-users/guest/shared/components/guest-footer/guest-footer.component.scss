@@ -14,20 +14,33 @@
   ;
     flex-direction: column;
     gap: 30px;
+    padding: 30px;
+    background: #fff;
     .logos{
+      display: flex;
+      align-items: center;
+      justify-content: center;
       img{
         width: 100%;
-        height: 100px;
+        max-height: 130px;
+
+        max-width: 1440px;
+        height: 100%;
       }
     }
     .txt{
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       p{
         color: #333;
         font-size: 24px;
         font-weight: 400;
         line-height: normal;
         font-style: italic;
+        max-width: 1440px;
+
       }
     }
   }
