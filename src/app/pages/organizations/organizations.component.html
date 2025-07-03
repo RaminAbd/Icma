@@ -83,7 +83,7 @@
                     </a>
                     <a
                       *ngIf="item.socialLink"
-                      href="https://{{ item.link }}"
+                      href="{{ item.socialLink }}"
                       target="_blank"
                       class="l-item"
                     >
@@ -99,7 +99,7 @@
                           fill="black"
                         />
                       </svg>
-                      <p>{{ item.socialLink }}</p>
+                      <p>Facebook</p>
                     </a>
                     <a
                       *ngIf="item.email"
@@ -120,7 +120,7 @@
                         />
                       </svg>
 
-                      <p>{{ item.email }}</p>
+                      <p>Mail</p>
                     </a>
                   </div>
                 </div>

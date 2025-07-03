@@ -1,9 +1,6 @@
 <div class="header-wrapper">
   <div class="inner">
     <div class="top">
-      <a routerLink="/" class="logo">
-        <img src="logo-w.svg" alt="" />
-      </a>
       <div class="social">
         <a
           href="https://www.facebook.com/icmageo?mibextid=wwXIfr&mibextid=wwXIfr"
@@ -85,7 +82,15 @@
       </div>
     </div>
     <div class="middle">
-      <p>"{{ "Gürcüstan azərbaycanlıları icmasının məlumat portalı" | translate }}"</p>
+      <a routerLink="/" class="logo">
+        <img src="logo-brown.svg" alt="" />
+      </a>
+      <p>
+        "{{
+          "Gürcüstan azərbaycanlıları icmasının məlumat portalı" | translate
+        }}"
+      </p>
+      <div class="empty"></div>
     </div>
 
     <div class="bottom">
@@ -177,7 +182,7 @@
 <header class="header mobile" id="mob">
   <div class="row1">
     <a routerLink="/" class="logo" aria-label="logo" (click)="closeBurger()">
-      <img src="logo.svg" alt="" />
+      <img src="logo-brown.svg" alt="" />
     </a>
 
     <div class="burger-back">

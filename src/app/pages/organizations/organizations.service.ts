@@ -22,6 +22,12 @@ export class OrganizationsService {
           (x) => x.value === +this.component.type
         );
         this.component.select(item);
+
+        this.component.organizations.forEach(org =>{
+          if(org.socialLink)org.socialLink = org.socialLink.replace(/\s+/g, '');
+          if(org.link)org.link = org.link.replace(/\s+/g, '');
+          if(org.email)org.email = org.email.replace(/\s+/g, '');
+        })
       });
   }
 }
